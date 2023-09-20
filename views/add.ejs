@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <%- include('partials/header') %>
+
+
+    <div class="content">
+        <h1>Add news</h1>
+        <form action="/add/post" method="post">
+            <p>Headline</p>
+            <input type="text" id="headline" name="headline" size="30"><br>
+            <p>author</p>
+            <input type="text" id="author" name="author" size="30"><br>
+            <p>body</p>
+            <textarea name="body" id="body" cols="30" rows="10"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
