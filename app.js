@@ -6,12 +6,8 @@ app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 
-const connection = mysql.createPool({
-    host :"localhost",
-    user: "root",
-    database:"scripting",
-    password:""
-})
+const config = require('./config');
+const connection = mysql.createPool(config.database);
 
 const home = (req, res) =>{
 
@@ -26,13 +22,11 @@ const newpost = (req, res) =>{
 }
 
 const submitPost = (req, res) =>{
-    console.log(req.body)
     data = req.body
     connection.query("INSERT INTO news SET ?", data, (error, results)=>{
         if (error){
             console.log(error)
         }else{
-        console.log(results)
         //data= { title: "POST SuccessFul"}
         res.redirect("/")
         }
